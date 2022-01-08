@@ -1,0 +1,85 @@
+<button type="button" style="float:right;margin-top:20px;"   class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#colorAdd">Add</button>
+<div class="content" style="margin-top:10px">
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Color Id</th>
+        <th scope="col">Color Name</th>
+        <th>Color Update</th>
+        <th>Color Delete</th>
+       
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let color of colors">
+        <td>{{color.colorId}}</td>
+        <td>{{color.colorName}}</td>
+       
+        <td><button type="button" class="btn btn-outline-danger"   data-bs-toggle="modal" (click)="getColor(color)" data-bs-target="#colorUpdate">Update</button></td>
+        <td><button type="button" class="btn btn-outline-warning"   (click)="deleteColor(color)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+
+
+    <div class="modal fade" id="colorAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="colorAdd">Color Add</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          
+            <form [formGroup]="colorAddForm">
+              <div class="row">
+          
+                <div class="col-md-12">
+        
+                  <input type="text" id="colorName" formControlName="colorName"  class="form-control fontInfo inputSize" placeholder="Color Name"
+                         aria-label="colorName" aria-describedby="basic-addon2">
+                </div>
+          
+          
+              </div>
+            </form>
+          </div>
+         
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="addColor()">Add</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="colorUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="colorUpdate">Color Update</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form  [formGroup]="colorUpdateForm" >
+              <div class="row">
+          
+                <div class="col-md-12">
+                  <input type="text" id="colorName" formControlName="colorName" class="form-control fontInfo inputSize" placeholder="Color Name"
+                  aria-label="colorName" aria-describedby="basic-addon2">
+                </div>
+          
+          
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="updateColor()">Update</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

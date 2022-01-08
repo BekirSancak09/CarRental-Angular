@@ -1,0 +1,28 @@
+<div class="d-flex gap-5 justify-content-center" id="dropdownFilter" style="margin-top:250px;">
+  <div class="dropdown-menu pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 280px;">
+  
+    <ul class="list-unstyled mb-0">
+      <li><a class="dropdown-item d-flex align-items-center gap-2 py-2">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#color-collapse" aria-expanded="true">
+          Colors
+        </button>
+      </a></li>
+     
+      <div class="collapse show" id="color-collapse">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+   
+      <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.colorId}}"  *ngFor="let color of colors"><a class="dropdown-item d-flex align-items-center gap-2 py-2">
+        <span class="d-inline-block  rounded-circle" style="width: .5em; height: .5em;"></span>
+        {{color.colorName}}
+      </a></li>
+   
+      </ul>
+      </div>
+    </ul>
+  </div>
+
+</div>
+
+<h6 style="margin-top:-60px;" *ngIf="currentColor">{{currentColor.colorName}} seçtiniz</h6>
+
+

@@ -1,0 +1,201 @@
+<button type="button" style="float:right;margin-top:20px;"    class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#carAdd">Add</button>
+<div class="content" style="margin-top:10px;">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Car Id</th>
+        <th scope="col">Brand</th>
+        <th scope="col">CarName</th>
+        <th scope="col">Color</th>
+        <th scope="col">Model Year</th>
+        <th scope="col">Daily Price</th>
+        <th scope="col">Findeks Point</th>
+        <th scope="col">Description</th>
+        <th>Car Update</th>
+        <th>Car Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let car of cars">
+        <td>
+          {{car.carId}}
+         </td>
+        <td>
+         {{car.brandName}}
+        </td>
+        <td>
+         {{car.carName}}
+       </td>
+       <td>
+          {{car.colorName}}
+       </td>
+       <td>
+          {{car.modelYear}}
+      </td>
+      <td>
+       {{car.dailyPrice |currency }} 
+      </td>
+      <td>
+        {{car.minFindeksPoint}}
+      </td>
+      <td>
+        {{car.description}}
+      </td>
+       <td><button type="button" class="btn btn-outline-danger"  (click)="getCar(car)" data-bs-toggle="modal" data-bs-target="#carUpdate" >Update</button></td>
+       <td><button type="button" class="btn btn-outline-warning"  (click)="deleteCar(car)" >Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="carAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carAdd">Car Add</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+        <form [formGroup]="carAddForm">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <select class="form-select inputSize" formControlName="brandId" id='brandId'>
+                  <option [ngValue]='brand.brandId' *ngFor="let brand of brands"> {{brand.brandName}} </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <select class="form-select inputSize" formControlName="colorId" id='colorId'>
+                  <option [ngValue]='color.colorId' *ngFor="let color of colors"> {{color.colorName}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="text" id="carName" formControlName="carName" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+             <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="modelYear" formControlName="modelYear" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+             <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="minFindeksPoint" formControlName="minFindeksPoint" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col">
+              <div class="form-group">
+                <input type="text" id="description" formControlName="description" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+        </form>
+      </div>
+     
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" (click)="addCar()">Add</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="carUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="carUpdate">Car Update</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+        <form [formGroup]="carEditForm">
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <select class="form-select inputSize" formControlName="brandId" id='brandId'>
+                  <option [ngValue]='brand.brandId' *ngFor="let brand of brands"> {{brand.brandName}} </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <select class="form-select inputSize" formControlName="colorId" id='colorId'>
+                  <option [ngValue]='color.colorId' *ngFor="let color of colors"> {{color.colorName}} </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="text" id="carName" formControlName="carName" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+             <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="modelYear" formControlName="modelYear" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+             <div class="mb-3 col-md-6">
+              <div class="form-group">
+                <input type="number" id="minFindeksPoint" formControlName="minFindeksPoint" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col">
+              <div class="form-group">
+                <input type="text" id="description" formControlName="description" class="form-control fontInfo inputSize w-100">
+              </div>
+             </div>
+          </div>
+        </form>
+      </div>
+     
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" (click)="editCar()">Update</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+ 
+  
+  
+  

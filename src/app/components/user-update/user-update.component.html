@@ -1,0 +1,48 @@
+<main class="form-signin">
+    <form [formGroup]="userInfoForm">
+      
+      <h1 class="h3 mb-3 fw-normal"></h1>
+  
+      <div class="form-floating">
+        <input type="email" class="form-control" id="floatingInput" formControlName="email" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" formControlName="firstName" placeholder="FirstName">
+        <label for="floatingPassword">FirstName</label>
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" formControlName="lastName" placeholder="LastName">
+        <label for="floatingPassword">LastName</label>
+      </div>
+  
+    
+      <button class="w-100 btn btn-lg btn-primary"  (click)="updateUserInfos()" type="submit">Save</button>
+
+    </form>
+  </main>
+
+
+  <main class="form-signin">
+    <form [formGroup]="changePasswordForm">
+      
+      <h1 class="h3 mb-3 fw-normal"></h1>
+  
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" formControlName="oldPassword" placeholder="oldPassword">
+        <label for="floatingPassword">Old Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" formControlName="newPassword" placeholder="newPassword">
+        <label for="floatingPassword">New Password</label>
+      </div>
+  
+    
+      <button class="w-100 btn btn-lg btn-primary" (click)="updateUserPassword()" type="submit">Save</button>
+
+    </form>
+  </main>
+  
+  
+  
+  

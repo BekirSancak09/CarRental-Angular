@@ -1,0 +1,25 @@
+
+        <div class="modal-body">
+          <div class="row">
+
+            <div class="mb-3 col-md-6">
+              <input type="date" class="form-control" [(ngModel)]="rentDate" id="floatingInput" placeholder="rentDate"
+              (change)="onChangeEvent($event);checkReturnDate()" min="{{minDate}}">
+              <label for="floatingInput">Rent Date</label>
+            </div>
+            <div class="mb-3 col-md-6">
+              <input type="date" class="form-control" [(ngModel)]="returnDate"  id="floatingInput" placeholder="returnDate"
+              disabled='{{!firstDate}}' min="{{minDate}}"  (input)='totalAmount($event)'>
+              <label for="floatingInput">Return Date</label>
+            </div>
+          </div>
+
+        
+        </div>
+       
+        <div class="modal-footer">
+         
+          <button type="button" class="btn btn-primary" (click)="addRental()">Add</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+

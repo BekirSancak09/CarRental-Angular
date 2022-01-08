@@ -1,0 +1,93 @@
+<div class="content">
+    <div class="col-md-7 col-lg-8">
+        <div class="row gy-3">
+            <div class="col-md-6">
+                <select class="form-select" (change)="getCardInfos($event)">
+                    <option [value]="0">Your Saved Cards</option>
+                    <option *ngFor="let card of savedCards" [value]="card.cardId">{{card.nameOnTheCard}}</option>
+                  </select>
+            </div>           
+        </div>
+        <form [formGroup]="paymentAddForm"> 
+        <div class="row gy-3">
+
+            <div class="col-md-6">
+                <select  name='cardInfosToSaved' class="form-select inputSize fontInfo"  placeholder="My Cards"  (change)="getCardInfos($event)">
+                  <option [value]="0">Your Saved Cards</option>
+                  <option *ngFor="let card of savedCards" [value]="card.cardId"> {{card.nameOnTheCard}}</option>
+                </select>
+              </div>
+   
+            <div class="col-md-6">
+                <div class="form-group">
+                <label for="cc-name" class="form-label">Name on card</label>
+                <input type="text" class="form-control" id="nameOnTheCard" formControlName="nameOnTheCard" placeholder="nameOnTheCard" required="">
+                 </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="cc-number" class="form-label">Credit card number</label>
+                    <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19"
+                     formControlName="cardNumber" class="form-control" id="cc-number" placeholder="Card Number">
+                    
+                </div>
+                
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="cc-expiration" class="form-label">Expiration</label>
+                    <select  name='dateMonth'class="form-select" id='dateMonth' formControlName='dateMonth' placeholder="Month">
+                        <option [ngValue]='1'>January</option>
+                        <option [ngValue]='2'>February</option>
+                        <option [ngValue]='3'>March</option>
+                        <option [ngValue]='4'>April</option>
+                        <option [ngValue]='5'>May</option>
+                        <option [ngValue]='6'>June</option>
+                        <option [ngValue]='7'>July</option>
+                        <option [ngValue]='8'>August</option>
+                        <option [ngValue]='9'>September</option>
+                        <option [ngValue]='10'>October</option>
+                        <option [ngValue]='11'>November</option>
+                        <option [ngValue]='12'>December</option>
+                      </select>
+                </div>
+               
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select name='dateYear' class="form-select" formControlName="dateYear" id='dateYear' placeholder="Year">
+                        <option [ngValue]='21'>2021</option>
+                        <option [ngValue]='22'>2022</option>
+                        <option [ngValue]='23'>2023</option>
+                        <option [ngValue]='24'>2024</option>
+                        <option [ngValue]='25'>2025</option>
+                        <option [ngValue]='26'>2026</option>
+                        <option [ngValue]='27'>2027</option>
+                      </select>
+                </div>
+               
+              
+            </div>
+            <div class="col-md-3">
+               
+                <div class="form-group">
+                    <label for="cc-cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" maxlength="3" id="cvvCode" formControlName="cvvCode" placeholder="CVV">
+                </div>
+               
+            </div>
+            <div class="col-md-3 float-end fontInfo mt-1"  *ngIf="totalPrice">
+                <label class="padding: 0 5px 0 5px"> Total : {{totalPrice | currency: "USD":true:"1.2-2"}} </label>
+              </div>
+        </div>
+    </form>
+    </div>
+    <div class="mb-3 form-check form-switch" style="margin-left: 3px">
+        <input class="form-check-input" type="checkbox" style="margin-top: 5px" id="flexSwitchCheckChecked" [(ngModel)]='checked' (ngModelChange)="changeEvent()">
+        <label class="form-check-label" for="flexSwitchCheckChecked" style="margin-left: 10px; margin-top: 2px">Save this card.</label>
+      </div>
+      <div class="mb-3" style="margin-left: 30px">
+        <button type="submit" (click)="completeThePayProcess()" class="btn btn-primary">Pay</button>
+      </div>
+
+</div>

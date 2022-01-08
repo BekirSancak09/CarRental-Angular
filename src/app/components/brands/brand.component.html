@@ -1,0 +1,31 @@
+<div class="d-flex gap-5 justify-content-center" id="dropdownFilter" style="margin-top: -55px;">
+  <div class="dropdown-menu pt-0 mx-0 rounded-3 shadow overflow-hidden" style="width: 280px;">
+    
+   
+    <ul class="list-unstyled mb-0">
+      <li><a class="dropdown-item d-flex align-items-center gap-2 py-2">
+        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="true">
+          Brands
+        </button>
+      </a></li>
+    
+      <div class="collapse show" id="brand-collapse">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+   
+      <li (click)="setCurrentBrand(brand)"  routerLink="/cars/brand/{{brand.brandId}}"  *ngFor="let brand of brands"  ><a class="dropdown-item d-flex align-items-center gap-2 py-2">
+        <span class="d-inline-block rounded-circle" style="width: .5em; height: .5em;"></span>
+        {{brand.brandName}}
+      </a>
+
+    
+    </li>
+    
+     
+      </ul>
+      </div>
+    </ul>
+  </div>
+  
+</div>
+
+<h6 style="margin-top:-60px;" *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h6>
