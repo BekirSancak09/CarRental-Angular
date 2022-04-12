@@ -27,7 +27,6 @@ This project is the frontend part of <a href="https://github.com/BekirSancak09/R
 - Bootsrat 5.1.1
 - Bootsrap Icons 
 - Jquery 3.6.0
-- angular/core 12.2.0
 - angular/animations 12.2.5
 - auth0/angular-jwt 5.0.2
 - ngx-toastr 14.1.3
