@@ -24,13 +24,15 @@ This project is the frontend part of <a href="https://github.com/BekirSancak09/R
 - Services
 - Custom pipes
 - Interceptor
-- Bootsrat v5 Beta 2
+- Bootsrat 5.1.1
 - Bootsrap Icons 
 - Jquery 3.6.0
-- ngx-toastr 13.2.1
-- Popper.js 1.16.1
-- Primeicons 4.1.0
-- Primeng 11.3.1
+- angular/core 12.2.0
+- angular/animations 12.2.5
+- auth0/angular-jwt 5.0.2
+- ngx-toastr 14.1.3
+- Popper.js 2.10.2
+
 
 
 
